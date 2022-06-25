@@ -20,10 +20,7 @@ What I did
 The following is _ and it's interesting/significant because _
 
 ````javascript
-if (girl.walksIn && girl.waist == "itty bitty" && girl.roundThing.location == yourFace) {
-    you.getSprung();
-    return 0;
-}
+// js code snippet goes here
 ````
 
 ## UX wires/prototype
