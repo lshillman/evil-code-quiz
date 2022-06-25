@@ -1,8 +1,8 @@
-# Project Title
+# Evil Code Quiz
 
 ## Subtitle
 
-[Deployed Link](https://lshillman.github.io/horiseon-refactor/)
+[Deployed Link](https://lshillman.github.io/evil-code-quiz/)
 
 Description of project (also remember to add a blurb and the deployed link to the repo's "about" section)
 
@@ -44,4 +44,4 @@ https://www.w3.org/WAI/
 
 ## License
 
-This project uses the MIT License.
+Talk to me if you want to use this.
