@@ -17,7 +17,7 @@ header {
 }
 
 #intro {
-   display: none;
+   /* display: none; */
 }
 
 #quiz {
@@ -57,3 +57,27 @@ header {
    flex-wrap: wrap;
    gap: 1rem;
 }
+
+.footnote {
+   margin-top:5rem;
+   border-top: 1px solid yellowgreen;
+   padding-top:1rem;
+   font-size: smaller;
+}
+
+
+
+
+
+
+@media screen and (max-width: 650px) {
+   #choices button {
+      flex-basis: calc(50% - 0.5rem);
+   }
+ }
+
+ @media screen and (max-width: 360px) {
+   #choices button {
+      flex-basis: 100%;
+   }
+ }
