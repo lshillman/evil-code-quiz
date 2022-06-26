@@ -1,5 +1,13 @@
 console.log("I'm a JavaScript file linked to this page!");
 
+function logQuestion(question) {
+    var message = question.question;
+    for (i = 0; i < question.choices.length; i++) {
+        message = message + " | " + question.choices[i].choice;
+    }
+    console.log(message);
+}
+
 var questionBank = [
     {
         question: "Is 'falsy' truthy or falsy?",
@@ -13,9 +21,6 @@ var questionBank = [
             console.log("shuffleChoices function");
         },
         audio: "./assets/sound/somefile.mp3",
-        logQuestion: function() {
-            console.log(this.question + " -- " + this.choices[0].choice + ", " + this.choices[1].choice + ", " + this.choices[2].choice + ", " + this.choices[3].choice);
-        },
     },
 
     {
@@ -30,15 +35,6 @@ var questionBank = [
             console.log("shuffleChoices function");
         },
         audio: "./assets/sound/somefile.mp3",
-        logQuestion: function() {
-            var message = this.question;
-            for (i = 0; i < this.choices.length; i++) {
-                message = message + " | " + this.choices[i].choice;
-            }
-            console.log(message);
-            // console.log(this.question + " -- " + this.choices[0].choice + ", " + this.choices[1].choice + ", " + this.choices[2].choice + ", " + this.choices[3].choice);
-
-        },
     },
 
 ];
