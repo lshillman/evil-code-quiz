@@ -1,4 +1,12 @@
-console.log("I'm a JavaScript file linked to this page!");
+var clock = document.getElementById("clock");
+var question = document.getElementById("question");
+var choices = document.getElementById("choices");
+
+var currentQuestion = 0;
+
+
+
+
 
 function logQuestion(question) {
     var message = question.question;
@@ -46,12 +54,21 @@ var questionBank = [
 
 
 
+function showNextQuestion() {
+    var answerChoices = "";
+    for (i = 0; i < questionBank[0].choices.length; i++) {
+        answerChoices += '<button class="choice">' + questionBank[0].choices[i].choice + '</button>';
+    }
 
+    question.innerHTML = questionBank[0].question;
+    choices.innerHTML = answerChoices;
+}
 
 
 function beginQuiz() {
     document.getElementById('intro').setAttribute("style", "display: none;");
     document.getElementById('quiz').setAttribute("style", "display: block;");
+    showNextQuestion();
 }
 
 
