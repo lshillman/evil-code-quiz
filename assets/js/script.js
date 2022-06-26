@@ -61,23 +61,29 @@ function startClock() {
 
 
 function showNextQuestion() {
-    var answerChoices = "";
-    for (i = 0; i < questionBank[currentQuestion].choices.length; i++) {
-        answerChoices += '<button class="choice">' + questionBank[currentQuestion].choices[i].choice + '</button>';
-    }
-    question.innerHTML = questionBank[currentQuestion].question;
-    choices.innerHTML = answerChoices;
-    for (i = 0; i < questionBank[currentQuestion].choices.length; i++) {
-        if (questionBank[currentQuestion].choices[i].isCorrect) {
-            choices.children[i].addEventListener("click", correctClick);
-        } else {
-            choices.children[i].addEventListener("click", incorrectClick);
+    if (questionBank[currentQuestion]) {
+        var answerChoices = "";
+        for (i = 0; i < questionBank[currentQuestion].choices.length; i++) {
+            answerChoices += '<button class="choice">' + questionBank[currentQuestion].choices[i].choice + '</button>';
         }
+        question.innerHTML = questionBank[currentQuestion].question;
+        choices.innerHTML = answerChoices;
+        for (i = 0; i < questionBank[currentQuestion].choices.length; i++) {
+            if (questionBank[currentQuestion].choices[i].isCorrect) {
+                choices.children[i].addEventListener("click", correctClick);
+            } else {
+                choices.children[i].addEventListener("click", incorrectClick);
+            }
+        }
+    } else {
+        console.log("Finished quiz");
     }
 }
 
 function correctClick() {
     console.log("Correct choice clicked");
+    currentQuestion++;
+    showNextQuestion();
 }
 
 function incorrectClick() {
