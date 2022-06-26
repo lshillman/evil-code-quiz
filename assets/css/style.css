@@ -1,3 +1,59 @@
+* {
+   font-family: 'Courier New', Courier, monospace;
+}
+
 body {
-   background-color: aqua; 
+   background-color: rgb(1, 53, 1);
+   color: greenyellow;
+}
+
+header {
+   text-align: center;
+}
+
+#intro, #quiz {
+   max-width: 700px;
+   margin: 0 auto;
+}
+
+#intro {
+   display: none;
+}
+
+#quiz {
+   /* display: none; */
+}
+
+#intro button {
+   border: 4px solid greenyellow;
+   background-color: rgb(1, 53, 1);
+   color: greenyellow;
+   padding: 0.5rem;
+   margin: 1rem auto;
+   font-weight: bold;
+   font-size:larger;
+}
+
+#intro button:hover {
+   color: rgb(1, 53, 1);
+   background-color: greenyellow;
+}
+
+#quiz button {
+   border: 2px solid greenyellow;
+   background-color: rgb(1, 53, 1);
+   color: greenyellow;
+   font-weight: bold;
+   padding: 0.5rem;
+}
+
+#quiz button:hover {
+   color: rgb(1, 53, 1);
+   background-color: greenyellow;
+}
+
+#choices {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
 }
