@@ -35,8 +35,9 @@ header {
 }
 
 #intro button:hover {
-   color: rgb(1, 53, 1);
-   background-color: greenyellow;
+   /* color: rgb(1, 53, 1);
+   background-color: greenyellow; */
+   box-shadow: 6px 6px 0 greenyellow;
 }
 
 #quiz button {
@@ -48,8 +49,10 @@ header {
 }
 
 #quiz button:hover {
-   color: rgb(1, 53, 1);
-   background-color: greenyellow;
+   /* color: rgb(1, 53, 1);
+   background-color: greenyellow; */
+   box-shadow: 6px 6px 0 greenyellow;
+
 }
 
 #choices {
