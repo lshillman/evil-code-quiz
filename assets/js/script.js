@@ -3,12 +3,16 @@ var clock = document.getElementById("seconds");
 var intro = document.getElementById('intro');
 var quiz = document.getElementById('quiz');
 var highscores = document.getElementById('highscores');
+var nameModal = document.getElementById('modal');
+var gameOverMsg = document.getElementById('gameOverMsg');
+var playerName = document.getElementById('name');
+var saveNameBtn = document.getElementById('saveNameBtn');
 
 var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 
 var timer;
-var timeRemaining = 60;
+var timeRemaining = 5;
 var currentQuestion = 0;
 
 var questionsAnswered = 0;
@@ -16,12 +20,17 @@ var correctCount = 0;
 
 var scores = [
     {name:"Luke", score:999999},
-    {name:"Clyde", score:450},
+    {name:"Clyde", score:48},
     {name:"Pinky", score:202},
     {name:"Inky", score:200},
-    {name:"Pinky", score:48},
+    {name:"Blinky", score:450},
 ];
 
+var lowestHighScore = 0;
+
+function sortScores() {
+    // TODO write this
+}
 
 function logQuestion(question) { // used for debugging
     var message = question.question;
@@ -118,14 +127,22 @@ function incorrectClick() {
 function finishQuiz(timer) {
     if (timeRemaining >= 0 && currentQuestion == questionBank.length) {
         console.log("You finished, congrats!");
+        gameOverMsg.innerHTML = "Congrats, you finished!";
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
+        if (calculateScore() > lowestHighScore && scores.length < 11) {
+            collectName();
+        }
     } else {
         console.log("Time's up!");
+        gameOverMsg.innerHTML = "Time's up!";
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
+        if (calculateScore() > lowestHighScore && scores.length < 11) {
+            collectName();
+        }
     }
 }
 
@@ -134,6 +151,17 @@ function calculateScore() {
         return correctCount * timeRemaining;
     } else {
         return correctCount;
+    }
+}
+
+function collectName() {
+    nameModal.setAttribute("style", "display: block;");
+}
+
+function addToHighScores() {
+    console.log(playerName.innerText); // TODO FIGURE OUT WHY THIS DOESN'T WORK
+    if (playerName.innerText) {
+        scores.push({name: playerName.innerText, score: calculateScore()});
     }
 }
 
@@ -148,3 +176,4 @@ function beginQuiz() {
 
 
 document.getElementById("beginBtn").addEventListener("click", beginQuiz);
+saveNameBtn.addEventListener("click", addToHighScores);
