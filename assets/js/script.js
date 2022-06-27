@@ -1,4 +1,9 @@
 var clock = document.getElementById("seconds");
+
+var intro = document.getElementById('intro');
+var quiz = document.getElementById('quiz');
+var highscores = document.getElementById('highscores');
+
 var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 
@@ -108,16 +113,21 @@ function finishQuiz(timer) {
     if (timeRemaining >= 0 && currentQuestion == questionBank.length) {
         console.log("You finished, congrats!");
         clearInterval(timer);
+        highscores.setAttribute("style", "display: block;");
+        quiz.setAttribute("style", "display: none;");
     } else {
         console.log("Time's up!");
         clearInterval(timer);
+        highscores.setAttribute("style", "display: block;");
+        quiz.setAttribute("style", "display: none;");
     }
 }
 
 
 function beginQuiz() {
-    document.getElementById('intro').setAttribute("style", "display: none;");
-    document.getElementById('quiz').setAttribute("style", "display: block;");
+    intro.setAttribute("style", "display: none;");
+    highscores.setAttribute("style", "display: none;");
+    quiz.setAttribute("style", "display: block;");
     showNextQuestion();
     startClock();
 }
