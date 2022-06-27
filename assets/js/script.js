@@ -2,6 +2,7 @@ var clock = document.getElementById("seconds");
 var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 
+var timer;
 var timeRemaining = 5;
 var currentQuestion = 0;
 
@@ -55,7 +56,7 @@ var questionBank = [
 
 
 function startClock() {
-    var timer = setInterval(function() {
+    timer = setInterval(function() {
         if (timeRemaining > 0) {
             timeRemaining--;
             clock.innerHTML = timeRemaining;
@@ -84,7 +85,7 @@ function showNextQuestion() {
             }
         }
     } else {
-        finishQuiz();
+        finishQuiz(timer);
     }
 }
 
@@ -103,8 +104,9 @@ function incorrectClick() {
 
 function finishQuiz(timer) {
     console.log("Finished quiz");
-    if (timeRemaining >= 0 && answeredCount == ) {
+    if (timeRemaining >= 0 && currentQuestion == questionBank.length) {
         console.log("You finished, congrats!");
+        clearInterval(timer);
     } else {
         console.log("Time's up!");
         clearInterval(timer);
