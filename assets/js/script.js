@@ -17,7 +17,6 @@ var correctCount = 0;
 
 
 
-
 function logQuestion(question) { // used for debugging
     var message = question.question;
     for (i = 0; i < question.choices.length; i++) {
@@ -98,6 +97,7 @@ function showNextQuestion() {
 function correctClick() {
     console.log("Correct choice clicked");
     currentQuestion++;
+    correctCount++;
     showNextQuestion();
 }
 
@@ -120,6 +120,14 @@ function finishQuiz(timer) {
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
+    }
+}
+
+function calculateScore() {
+    if (timeRemaining > 0) {
+        return correctCount * timeRemaining;
+    } else {
+        return correctCount;
     }
 }
 
