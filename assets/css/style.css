@@ -40,6 +40,10 @@ header {
    box-shadow: 6px 6px 0 greenyellow;
 }
 
+#quiz h2 {
+   text-align: center;
+}
+
 #quiz button {
    border: 2px solid greenyellow;
    background-color: rgb(1, 53, 1);

@@ -105,11 +105,10 @@ function incorrectClick() {
     console.log("incorrect choice clicked");
     currentQuestion++;
     showNextQuestion();
-    clock.innerHTML-= 10;
+    timeRemaining -= 10;
 }
 
 function finishQuiz(timer) {
-    console.log("Finished quiz");
     if (timeRemaining >= 0 && currentQuestion == questionBank.length) {
         console.log("You finished, congrats!");
         clearInterval(timer);
