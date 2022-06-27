@@ -14,7 +14,13 @@ var currentQuestion = 0;
 var questionsAnswered = 0;
 var correctCount = 0;
 
-
+var scores = [
+    {name:"Luke", score:999999},
+    {name:"Clyde", score:450},
+    {name:"Pinky", score:202},
+    {name:"Inky", score:200},
+    {name:"Pinky", score:48},
+];
 
 
 function logQuestion(question) { // used for debugging
