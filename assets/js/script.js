@@ -8,7 +8,7 @@ var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 
 var timer;
-var timeRemaining = 5;
+var timeRemaining = 60;
 var currentQuestion = 0;
 
 var questionsAnswered = 0;
@@ -106,6 +106,7 @@ function incorrectClick() {
     currentQuestion++;
     showNextQuestion();
     timeRemaining -= 10;
+    clock.innerHTML = timeRemaining;
 }
 
 function finishQuiz(timer) {
