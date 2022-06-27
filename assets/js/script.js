@@ -77,6 +77,7 @@ function showNextQuestion() {
         }
         question.innerHTML = questionBank[currentQuestion].question;
         choices.innerHTML = answerChoices;
+        // TODO: see if I can use "appendChild" to accomplish this function using only 1 loop
         for (i = 0; i < questionBank[currentQuestion].choices.length; i++) {
             if (questionBank[currentQuestion].choices[i].isCorrect) {
                 choices.children[i].addEventListener("click", correctClick);

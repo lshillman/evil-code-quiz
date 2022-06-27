@@ -11,7 +11,7 @@ header {
    text-align: center;
 }
 
-#intro, #quiz {
+#intro, #quiz, #highscores {
    max-width: 700px;
    margin: 0 auto;
 }
@@ -21,7 +21,7 @@ header {
 }
 
 #quiz {
-   /* display: none; */
+   display: none;
 }
 
 #intro button {
@@ -69,7 +69,28 @@ header {
 }
 
 
+/* HIGH SCORES */
 
+#highscores h2 {
+   text-align: center;
+}
+
+#highscores table {
+   width: 100%;
+}
+
+#highscores table td {
+   border-bottom: 1px dashed yellowgreen;
+}
+
+
+#highscores table td:first-child {
+   text-align: left;
+}
+
+#highscores table td:last-child {
+   text-align: right;
+}
 
 
 
