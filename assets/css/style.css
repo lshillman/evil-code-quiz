@@ -4,6 +4,8 @@
    --overlay: rgba(1, 53, 1, 0.7);
 }
 
+/* I was clearly going for old school monochrome terminal, but now I can't unsee "Mount Olive pickle jar" */
+
 * {
    font-family: 'Courier New', Courier, monospace;
    color: var(--terminalgreen);

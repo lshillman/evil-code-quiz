@@ -14,12 +14,13 @@ var question = document.getElementById("question");
 var choices = document.getElementById("choices");
 
 var timer;
-var timeRemaining = 5;
+var timeRemaining = 60;
 var currentQuestion = 0;
 
 var questionsAnswered = 0;
 var correctCount = 0;
 
+// initial high scores to display if we don't have stuff in localstorage
 var scores = [
     {name:"Luke", score:999999},
     {name:"Blinky", score:450},
@@ -109,7 +110,7 @@ function showNextQuestion() {
             if (questionBank[currentQuestion].choices[i].isCorrect) {
                 choices.children[i].addEventListener("click", correctClick);
             } else {
-                choices.children[i].addEventListener("click", incorrectClick);
+                choices.children[i].addEventListener("click", incorrectClick); // Event delegation? LOL, what's that?
             }
         }
     } else {
@@ -117,6 +118,7 @@ function showNextQuestion() {
     }
 }
 
+// stuff to do when a correct answer is clicked
 function correctClick() {
     console.log("Correct choice clicked");
     currentQuestion++;
@@ -124,6 +126,7 @@ function correctClick() {
     showNextQuestion();
 }
 
+// stuff to do when a wrong answer is clicked
 function incorrectClick() {
     console.log("incorrect choice clicked");
     currentQuestion++;
@@ -132,9 +135,11 @@ function incorrectClick() {
     clock.innerHTML = timeRemaining;
 }
 
+// stuff to do when all questions or answered or the clock runs out.
+// TODO combine redundant stuff to make this neater.
 function finishQuiz(timer) {
     if (timeRemaining >= 0 && currentQuestion == questionBank.length) {
-        console.log("You finished, congrats!");
+        // console.log("You finished, congrats!");
         gameOverMsg.innerHTML = "Congrats, you finished!";
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
@@ -144,12 +149,13 @@ function finishQuiz(timer) {
             collectName();
         }
     } else {
-        console.log("Time's up!");
+        // console.log("Time's up!");
         gameOverMsg.innerHTML = "Time's up!";
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
         clockHeading.setAttribute("style", "display: none;");
+         // check to see if the user's score is higher than the lowest high score
         if ((calculateScore() > scores[scores.length-1].score || scores.length < 10) && calculateScore() > 0) {
             collectName();
         }
@@ -164,6 +170,7 @@ function calculateScore() { // if you finish the quiz, your correct answer count
     }
 }
 
+// show the name input modal
 function collectName() {
     nameModal.setAttribute("style", "display: block;");
     playerName.focus();
@@ -185,6 +192,7 @@ function addToHighScores(e) {
     updateHighScoresTable();
 }
 
+// write the scores array to the page as a table
 function updateHighScoresTable() {
     highscoresTable.innerHTML = "";
     var tablecontent = "";
@@ -194,13 +202,13 @@ function updateHighScoresTable() {
     highscoresTable.innerHTML = tablecontent;
 }
 
-
+// Reset all the variables and prepare a new quiz. Important to reset variables in case the user hits "try again" without refreshing the page.
 function beginQuiz() {
     intro.setAttribute("style", "display: none;");
     highscores.setAttribute("style", "display: none;");
     quiz.setAttribute("style", "display: block;");
     clockHeading.setAttribute("style", "display: block;");
-    timeRemaining = 5;
+    timeRemaining = 60;
     clock.innerHTML = timeRemaining;
     currentQuestion = 0;
     correctCount = 0;
@@ -209,8 +217,9 @@ function beginQuiz() {
     startClock();
 }
 
+// stuff to do when the page loads
 function init () {
-    if (localStorage.getItem("scores") != null) {
+    if (localStorage.getItem("scores") != null) { // if we have high scores in local storage, write them to the scores array.
         scores = JSON.parse(localStorage.getItem("scores"));
         highscores.setAttribute("style", "display: block;");
         intro.setAttribute("style", "display: none;");
@@ -218,6 +227,7 @@ function init () {
     updateHighScoresTable();
 }
 
+// do some stuff when the page loads
 init();
 
 document.getElementById("beginBtn").addEventListener("click", beginQuiz);
