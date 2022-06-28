@@ -28,12 +28,6 @@ var scores = [
     {name:"Clyde", score:48},
 ];
 
-var lowestHighScore = 0;
-
-function sortScores() {
-    // TODO write this
-}
-
 function logQuestion(question) { // used for debugging
     var message = question.question;
     for (i = 0; i < question.choices.length; i++) {
@@ -48,29 +42,25 @@ var questionBank = [
     {
         question: "Is 'falsy' truthy or falsy?",
         choices: [
-            {choice: "Truthy", isCorrect: true},
-            {choice: "Falsy", isCorrect: false},
-            {choice: "Neither; it's NaN", isCorrect: false},
-            {choice: "Neither; it's undefined", isCorrect: false}
+            {choice: "Truthy", isCorrect: true, sortIndex: 0},
+            {choice: "Falsy", isCorrect: false, sortIndex: 0},
+            {choice: "Neither; it's NaN", isCorrect: false, sortIndex: 0},
+            {choice: "Neither; it's undefined", isCorrect: false, sortIndex: 0}
         ],
-        shuffleChoices: function() {
-            console.log("shuffleChoices function");
-        },
         audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
     },
 
     {
         question: "Is <em>true</em> truthy or falsy?",
         choices: [
-            {choice: "Truthy", isCorrect: false},
-            {choice: "Falsy", isCorrect: false},
-            {choice: "Neither; it's NaN", isCorrect: false},
-            {choice: "Neither; it's true", isCorrect: true}
+            {choice: "Truthy", isCorrect: false, sortIndex: 0},
+            {choice: "Falsy", isCorrect: false, sortIndex: 0},
+            {choice: "Neither; it's NaN", isCorrect: false, sortIndex: 0},
+            {choice: "Neither; it's true", isCorrect: true, sortIndex: 0}
         ],
-        shuffleChoices: function() {
-            console.log("shuffleChoices function");
-        },
         audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
     },
 
 ];
@@ -88,6 +78,22 @@ function startClock() {
 }
 
 
+function shuffleQuestions() {
+    // shuffle the questions
+    for (i=0; i < questionBank.length; i++) {
+        questionBank[i].sortIndex = Math.floor(Math.random() * questionBank.length);
+    }
+    questionBank.sort((a, b) => b.sortIndex - a.sortIndex);
+
+    // shuffle the answer choices
+    for (i=0; i < questionBank.length; i++) {
+        for (z=0; z < questionBank[i].choices.length; z++) {
+            questionBank[i].choices[z].sortIndex = Math.floor(Math.random() * questionBank[i].choices.length);
+        }
+        questionBank[i].choices.sort((a, b) => b.sortIndex - a.sortIndex);
+    }
+
+}
 
 
 function showNextQuestion() {
@@ -163,6 +169,9 @@ function collectName() {
     playerName.focus();
 }
 
+
+// I decided to only add your name to the high scores if it's greater than 0. Since I'm only storing the top 10, that means your score has to be greater than 0 and grweater than the lowest score on the list (if there are 10 items) for the prompt to appear.
+
 function addToHighScores(e) {
     e.preventDefault;
     console.log(playerName.value);
@@ -195,6 +204,7 @@ function beginQuiz() {
     clock.innerHTML = timeRemaining;
     currentQuestion = 0;
     correctCount = 0;
+    shuffleQuestions();
     showNextQuestion();
     startClock();
 }

@@ -94,9 +94,11 @@ header #clock {
 
 #choices {
    display: flex;
+   width: fit-content;
    flex-wrap: wrap;
    gap: 1rem;
 }
+
 
 .footnote {
    margin-top:5rem;
