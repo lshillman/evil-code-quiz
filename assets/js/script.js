@@ -285,12 +285,12 @@ function addToHighScores(e) {
     console.log(playerName.value);
     if (playerName.value) {
         scores.push({name: playerName.value, score: calculateScore()});
+        nameModal.setAttribute("style", "display: none;");
+        scores.sort((a, b) => b.score - a.score); // sorts scores from highest to lowest
+        scores.splice(10); // only store the top 10 scores
+        localStorage.setItem("scores", JSON.stringify(scores));
+        updateHighScoresTable();
     }
-    nameModal.setAttribute("style", "display: none;");
-    scores.sort((a, b) => b.score - a.score); // sorts scores from highest to lowest
-    scores.splice(10); // only store the top 10 scores
-    localStorage.setItem("scores", JSON.stringify(scores));
-    updateHighScoresTable();
 }
 
 // write the scores array to the page as a table
