@@ -64,6 +64,107 @@ var questionBank = [
         sortIndex: 0
     },
 
+    {
+        question: "What is the best way to put an object in localStorage?",
+        choices: [
+            {choice: "localStorage.setItem()", isCorrect: false, sortIndex: 0},
+            {choice: "localStorage.put()", isCorrect: false, sortIndex: 0},
+            {choice: "JSON.stringify()", isCorrect: true, sortIndex: 0},
+            {choice: "JSON.parse()", isCorrect: false, sortIndex: 0},
+            {choice: "JSON.put()", isCorrect: false, sortIndex: 0},
+            {choice: "JSON.localStorage.setItem()", isCorrect: false, sortIndex: 0}
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "What unit of time does setInterval take as an argument?",
+        choices: [
+            {choice: "seconds", isCorrect: false, sortIndex: 0},
+            {choice: "milliseconds", isCorrect: true, sortIndex: 0},
+            {choice: "nanoseconds", isCorrect: false, sortIndex: 0},
+            {choice: "minutes", isCorrect: false, sortIndex: 0},
+            {choice: "centiseconds", isCorrect: false, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "When working with JavaScript, how should you pronounce the G in 'gif'?",
+        choices: [
+            {choice: "Hard G, as in 'gift'", isCorrect: true, sortIndex: 0},
+            {choice: "Soft G, as in 'George'", isCorrect: true, sortIndex: 0},
+            {choice: "Gutteral CH, as in 'Bach'", isCorrect: true, sortIndex: 0},
+            {choice: "Y, as in 'yiff'", isCorrect: true, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "Does slice() affect the string it's used on?",
+        choices: [
+            {choice: "Yes, always", isCorrect: false, sortIndex: 0},
+            {choice: "No", isCorrect: true, sortIndex: 0},
+            {choice: "It depends on the scope of the string", isCorrect: false, sortIndex: 0},
+            {choice: "Only if invoked in a 'console.log' statement", isCorrect: false, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "In the following object, how would you access the value 'Tertiary adjunct of Unimatrix 01'?<br /><br />var collective = [<br />{designation: 'Locutus', role: 'Diplomat'},<br />{designation: '7/9', role: 'Tertiary Adjunct of Unimatrix 01'},<br />{designation: 'Hugh', role: 'Drone'}<br />]",
+        choices: [
+            {choice: "collective[1].role", isCorrect: true, sortIndex: 0},
+            {choice: "collective[0].role()", isCorrect: true, sortIndex: 0},
+            {choice: "'7/9'.role", isCorrect: false, sortIndex: 0},
+            {choice: "role(collective[1])", isCorrect: false, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "In the following object, how would you access the value 'bartender'?<br />var crewman = {name: 'Guinan', rank: 'bartender', station: 'Ten Forward'};",
+        choices: [
+            {choice: "crewman.rank", isCorrect: true, sortIndex: 0},
+            {choice: "crewman.rank()", isCorrect: false, sortIndex: 0},
+            {choice: "rank(crewman)", isCorrect: false, sortIndex: 0},
+            {choice: "Guinan.rank", isCorrect: false, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "In the following piece of code, what is 'pickle'?<br /><br />element.addEventListener('keyDown', keyHandler)<br /><br />function keyHandler(pickle) {<br />&nbsp;&nbsp;&nbsp;&nbsp;console.log('pickle');<br />}",
+        choices: [
+            {choice: "an event", isCorrect: true, sortIndex: 0},
+            {choice: "a keyHandler", isCorrect: false, sortIndex: 0},
+            {choice: "an event listener", isCorrect: false, sortIndex: 0},
+            {choice: "a string", isCorrect: false, sortIndex: 0},
+            {choice: "a function", isCorrect: false, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
+    {
+        question: "If a = 6, b = 'T', and c.toUpperCase === b is <i>true</i>, what is a possible value of a * c?",
+        choices: [
+            {choice: "NaN", isCorrect: true, sortIndex: 0},
+            {choice: "36", isCorrect: false, sortIndex: 0},
+            {choice: "undefined", isCorrect: false, sortIndex: 0},
+            {choice: "null", isCorrect: false, sortIndex: 0},
+            {choice: "error", isCorrect: false, sortIndex: 0},
+        ],
+        audio: "./assets/sound/somefile.mp3",
+        sortIndex: 0
+    },
+
 ];
 
 
