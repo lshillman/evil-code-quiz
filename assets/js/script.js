@@ -3,6 +3,7 @@ var clock = document.getElementById("seconds");
 var intro = document.getElementById('intro');
 var quiz = document.getElementById('quiz');
 var highscores = document.getElementById('highscores');
+var highscoresTable = document.getElementById('highscores-table');
 var nameModal = document.getElementById('modal');
 var gameOverMsg = document.getElementById('gameOverMsg');
 var playerName = document.getElementById('name');
@@ -159,10 +160,22 @@ function collectName() {
 }
 
 function addToHighScores() {
-    console.log(playerName.innerText); // TODO FIGURE OUT WHY THIS DOESN'T WORK
-    if (playerName.innerText) {
-        scores.push({name: playerName.innerText, score: calculateScore()});
+    console.log(playerName.value);
+    if (playerName.value) {
+        scores.push({name: playerName.value, score: calculateScore()});
     }
+    nameModal.setAttribute("style", "display: none;");
+    scores.sort((a, b) => b.score - a.score); // sorts scores from highest to lowest
+    updateHighScoresTable();
+}
+
+function updateHighScoresTable() {
+    highscoresTable.innerHTML = "";
+    var tablecontent = "";
+    for (i=0; i < scores.length; i++) {
+        tablecontent += ("<tr><td>" + scores[i].name + "</td><td>" + scores[i].score + "</td></tr>")
+    }
+    highscoresTable.innerHTML = tablecontent;
 }
 
 
