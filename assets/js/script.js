@@ -160,9 +160,11 @@ function calculateScore() { // if you finish the quiz, your correct answer count
 
 function collectName() {
     nameModal.setAttribute("style", "display: block;");
+    playerName.focus();
 }
 
-function addToHighScores() {
+function addToHighScores(e) {
+    e.preventDefault;
     console.log(playerName.value);
     if (playerName.value) {
         scores.push({name: playerName.value, score: calculateScore()});
