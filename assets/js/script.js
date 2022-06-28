@@ -134,7 +134,7 @@ function finishQuiz(timer) {
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
         clockHeading.setAttribute("style", "display: none;");
-        if (calculateScore() > scores[scores.length-1].score) {
+        if ((calculateScore() > scores[scores.length-1].score || scores.length < 10) && calculateScore() > 0) {
             collectName();
         }
     } else {
@@ -144,7 +144,7 @@ function finishQuiz(timer) {
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
         clockHeading.setAttribute("style", "display: none;");
-        if (calculateScore() > scores[scores.length-1].score) {
+        if ((calculateScore() > scores[scores.length-1].score || scores.length < 10) && calculateScore() > 0) {
             collectName();
         }
     }
@@ -189,8 +189,10 @@ function beginQuiz() {
     highscores.setAttribute("style", "display: none;");
     quiz.setAttribute("style", "display: block;");
     clockHeading.setAttribute("style", "display: block;");
-    timeRemaining = 60;
+    timeRemaining = 5;
+    clock.innerHTML = timeRemaining;
     currentQuestion = 0;
+    correctCount = 0;
     showNextQuestion();
     startClock();
 }
