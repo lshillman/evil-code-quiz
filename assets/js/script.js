@@ -189,6 +189,8 @@ function beginQuiz() {
     highscores.setAttribute("style", "display: none;");
     quiz.setAttribute("style", "display: block;");
     clockHeading.setAttribute("style", "display: block;");
+    timeRemaining = 60;
+    currentQuestion = 0;
     showNextQuestion();
     startClock();
 }
@@ -196,6 +198,8 @@ function beginQuiz() {
 function init () {
     if (localStorage.getItem("scores") != null) {
         scores = JSON.parse(localStorage.getItem("scores"));
+        highscores.setAttribute("style", "display: block;");
+        intro.setAttribute("style", "display: none;");
     }
     updateHighScoresTable();
 }
@@ -203,4 +207,5 @@ function init () {
 init();
 
 document.getElementById("beginBtn").addEventListener("click", beginQuiz);
+document.getElementById("tryAgainBtn").addEventListener("click", beginQuiz);
 saveNameBtn.addEventListener("click", addToHighScores);

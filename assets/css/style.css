@@ -67,7 +67,7 @@ header #clock {
    font-size:larger;
 }
 
-#intro button:hover {
+#intro button:hover, #highscores button:hover {
    /* color: rgb(1, 53, 1);
    background-color: greenyellow; */
    box-shadow: 6px 6px 0 var(--terminalgreen);
@@ -109,6 +109,7 @@ header #clock {
 /* HIGH SCORES */
 #highscores {
    display:none;
+   text-align: center;
 }
 
 #highscores h2 {
@@ -130,6 +131,16 @@ header #clock {
 
 #highscores table td:last-child {
    text-align: right;
+}
+
+#highscores button {
+   border: 4px solid var(--terminalgreen);
+   background-color: rgb(1, 53, 1);
+   color: var(--terminalgreen);
+   padding: 0.5rem;
+   margin: 2rem auto;
+   font-weight: bold;
+   font-size:larger;
 }
 
 /* MODAL */
