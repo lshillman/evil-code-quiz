@@ -1,12 +1,12 @@
 # Evil Code Quiz
 
-## Subtitle
+## Do you dare [TAKE THE QUIZ](https://lshillman.github.io/evil-code-quiz/)?
 
-[Deployed Link](https://lshillman.github.io/evil-code-quiz/)
+This is a diabolical little JS code quiz that uses the latest in adversarial instructional design to sow discord and self-doubt in the minds of even experienced developers. There are only 10 multiple-choice questions, but the timer and penalty mechanisms, to say nothing of the atrocious readability, make this quite a challenge.
 
-Description of project (also remember to add a blurb and the deployed link to the repo's "about" section)
+I used localStorage to keep track of high scores, so they'll stick around even if you close your browser. Feel free to take the quiz as many times as you like. Bet you can't beat my high score.
 
-What I did
+This is still a work in progress. Eventually there will be a larger question bank, and the computer will read each question aloud in a grating, high-pitched robot voice.
 
 ## Technologies used:
 
@@ -15,28 +15,40 @@ What I did
 * JS
 
 
-## Code snippet
+## Question shuffling
 
-The following is _ and it's interesting/significant because _
+Any quiz that you can re-take has to implement some basic measures to ensure you're not just being tested on muscle memory. I originally was thinking I could implement the [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle), but I realized I could simply use Math.random to assign a value to each question in the bank (and its answer choices), and then sort() on those values. Genius, I say.
 
 ````javascript
-// js code snippet goes here
+function shuffleQuestions() {
+    // shuffle the questions
+    for (i=0; i < questionBank.length; i++) {
+        questionBank[i].sortIndex = Math.floor(Math.random() * questionBank.length);
+    }
+    questionBank.sort((a, b) => b.sortIndex - a.sortIndex);
+
+    // shuffle the answer choices
+    for (i=0; i < questionBank.length; i++) {
+        for (z=0; z < questionBank[i].choices.length; z++) {
+            questionBank[i].choices[z].sortIndex = Math.floor(Math.random() * questionBank[i].choices.length);
+        }
+        questionBank[i].choices.sort((a, b) => b.sortIndex - a.sortIndex);
+    }
+
+}
 ````
 
 ## UX wires/prototype
 
 Here are the layouts/functionality I was going for...
-![a screenshot of the live site](./assets/images/readme/design.jpg)
+![US wireframes](./assets/images/readme/quiz-wireframe.jpg)
 
-## Screenshot of the live page and/or demo gif
-
-![a screenshot of the live site](./assets/images/readme/is-this-empathy.jpg)
+## Demo
 
 
 ## Credits
 
-List collaborators and roles, and resources consulted:
-https://www.w3.org/WAI/
+W3schools, as always, deserves all the credit for clarifying the confusing methods I used in this project. Spock's annoying verbal quiz at the beginning of Star Trek IV gets some credit for inspiration.
 
 
 ## License
