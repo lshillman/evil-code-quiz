@@ -9,7 +9,10 @@
 </head>
 <body>
     <header>
-        <h1>Evil Code Quiz</h1>
+        <div>
+            <h1>Evil Code Quiz</h1>
+            <h2 id="clock">TIME LEFT: <span id="seconds">60</span></h2>
+        </div>
     </header>    
     <main>
         <section id="intro">
@@ -17,12 +20,11 @@
 
             <p>You will start with 60 seconds. For each incorrect answer, ten seconds will be subtracted from your remaining time. Once started, the test must be completed.</p>
 
-            <button id="beginBtn">Begin the test</button>
+            <button id="beginBtn">Begin the quiz</button>
 
             <p class="footnote">*a lie, of course</p>
         </section>
         <section id="quiz">
-            <h2 id="clock"><span id="seconds">60</span> seconds remaining</h2>
             <p id="question">
                 What is the formula for the volume of a sphere?
             </p>

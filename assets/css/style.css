@@ -1,20 +1,52 @@
+:root {
+   --terminalgreen: greenyellow;
+   --dark: rgb(1, 53, 1);
+   --overlay: rgba(1, 53, 1, 0.7);
+}
+
 * {
    font-family: 'Courier New', Courier, monospace;
-   color: greenyellow;
+   color: var(--terminalgreen);
 }
 
 body {
-   background-color: rgb(1, 53, 1);
-   color: greenyellow;
+   background-color: var(--dark);
+   color: var(--terminalgreen);
 }
 
 header {
-   text-align: center;
+   position:fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: fit-content;
+   background-color: var(--terminalgreen);
+}
+
+header div {
+   max-width: 700px;
+   margin: 0 auto;
+   display:flex;
+   justify-content: space-between;
+}
+
+header h1 {
+   margin:0.25rem 0;
+   color: var(--dark);
+   font-size: 1.25rem;
+}
+
+header #clock {
+   background-color: var(--dark);
+   font-size: 1.25rem;
+   padding: 0 1rem;
+   margin:0.25rem 0;
+   display:none;
 }
 
 #intro, #quiz, #highscores {
    max-width: 700px;
-   margin: 0 auto;
+   margin: 5rem auto;
 }
 
 #intro {
@@ -26,9 +58,9 @@ header {
 }
 
 #intro button {
-   border: 4px solid greenyellow;
+   border: 4px solid var(--terminalgreen);
    background-color: rgb(1, 53, 1);
-   color: greenyellow;
+   color: var(--terminalgreen);
    padding: 0.5rem;
    margin: 1rem auto;
    font-weight: bold;
@@ -38,7 +70,7 @@ header {
 #intro button:hover {
    /* color: rgb(1, 53, 1);
    background-color: greenyellow; */
-   box-shadow: 6px 6px 0 greenyellow;
+   box-shadow: 6px 6px 0 var(--terminalgreen);
 }
 
 #quiz h2 {
@@ -46,9 +78,9 @@ header {
 }
 
 #quiz button {
-   border: 2px solid greenyellow;
-   background-color: rgb(1, 53, 1);
-   color: greenyellow;
+   border: 2px solid var(--terminalgreen);
+   background-color: var(--dark);
+   color: var(--terminalgreen);
    font-weight: bold;
    padding: 0.5rem;
 }
@@ -56,7 +88,7 @@ header {
 #quiz button:hover {
    /* color: rgb(1, 53, 1);
    background-color: greenyellow; */
-   box-shadow: 6px 6px 0 greenyellow;
+   box-shadow: 6px 6px 0 var(--terminalgreen);
 
 }
 
@@ -68,7 +100,7 @@ header {
 
 .footnote {
    margin-top:5rem;
-   border-top: 1px solid greenyellow;
+   border-top: 1px solid var(--terminalgreen);
    padding-top:1rem;
    font-size: smaller;
 }
@@ -88,7 +120,7 @@ header {
 }
 
 #highscores table td {
-   border-bottom: 1px dashed greenyellow;
+   border-bottom: 1px dashed var(--terminalgreen);
 }
 
 
@@ -107,14 +139,14 @@ header {
    top: 0;
    width: 100%;
    height: 100%;
-   background-color: rgba(1, 53, 1, 0.7);
+   background-color: var(--overlay);
    z-index: 3;
    display: none;
 }
 
 #collectName {
-   background-color: rgb(1, 53, 1);
-   border: 4px solid greenyellow;
+   background-color: var(--dark);
+   border: 4px solid var(--terminalgreen);
    margin-left: auto;
    margin-right: auto;
    padding: 1.5rem;
@@ -125,8 +157,8 @@ header {
 }
 
 #gameOverMsg {
-   background-color: greenyellow;
-   color:rgb(1, 53, 1);
+   background-color: var(--terminalgreen);
+   color:var(--dark);
    top:0;
    left:0;
    width:calc(100% + 1.5rem);
@@ -141,26 +173,26 @@ header {
 
 #modal input {
    background-color: transparent;
-   border: 2px solid greenyellow;
-   color: greenyellow;
+   border: 2px solid var(--terminalgreen);
+   color: var(--terminalgreen);
    padding: 0.5rem;
 }
 
 #modal input:focus {
-   box-shadow: 0 6px 0 greenyellow;
+   box-shadow: 0 6px 0 var(--terminalgreen);
    outline: none;
 }
 
 #modal button {
-   border: 2px solid greenyellow;
-   background-color: rgb(1, 53, 1);
-   color: greenyellow;
+   border: 2px solid var(--terminalgreen);
+   background-color: var(--dark);
+   color: var(--terminalgreen);
    font-weight: bold;
    padding: 0.5rem;
 }
 
 #modal button:hover {
-   box-shadow: 6px 6px 0 greenyellow;
+   box-shadow: 6px 6px 0 var(--terminalgreen);
 }
 
 

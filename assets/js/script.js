@@ -1,4 +1,5 @@
 var clock = document.getElementById("seconds");
+var clockHeading = document.getElementById("clock");
 
 var intro = document.getElementById('intro');
 var quiz = document.getElementById('quiz');
@@ -21,10 +22,10 @@ var correctCount = 0;
 
 var scores = [
     {name:"Luke", score:999999},
-    {name:"Clyde", score:48},
+    {name:"Blinky", score:450},
     {name:"Pinky", score:202},
     {name:"Inky", score:200},
-    {name:"Blinky", score:450},
+    {name:"Clyde", score:48},
 ];
 
 var lowestHighScore = 0;
@@ -132,7 +133,8 @@ function finishQuiz(timer) {
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
-        if (calculateScore() > lowestHighScore && scores.length < 11) {
+        clockHeading.setAttribute("style", "display: none;");
+        if (calculateScore() > scores[scores.length-1].score) {
             collectName();
         }
     } else {
@@ -141,13 +143,14 @@ function finishQuiz(timer) {
         clearInterval(timer);
         highscores.setAttribute("style", "display: block;");
         quiz.setAttribute("style", "display: none;");
-        if (calculateScore() > lowestHighScore && scores.length < 11) {
+        clockHeading.setAttribute("style", "display: none;");
+        if (calculateScore() > scores[scores.length-1].score) {
             collectName();
         }
     }
 }
 
-function calculateScore() {
+function calculateScore() { // if you finish the quiz, your correct answer count is multipled by the seconds remaining.
     if (timeRemaining > 0) {
         return correctCount * timeRemaining;
     } else {
@@ -166,6 +169,8 @@ function addToHighScores() {
     }
     nameModal.setAttribute("style", "display: none;");
     scores.sort((a, b) => b.score - a.score); // sorts scores from highest to lowest
+    scores.splice(10); // only store the top 10 scores
+    localStorage.setItem("scores", JSON.stringify(scores));
     updateHighScoresTable();
 }
 
@@ -183,10 +188,19 @@ function beginQuiz() {
     intro.setAttribute("style", "display: none;");
     highscores.setAttribute("style", "display: none;");
     quiz.setAttribute("style", "display: block;");
+    clockHeading.setAttribute("style", "display: block;");
     showNextQuestion();
     startClock();
 }
 
+function init () {
+    if (localStorage.getItem("scores") != null) {
+        scores = JSON.parse(localStorage.getItem("scores"));
+    }
+    updateHighScoresTable();
+}
+
+init();
 
 document.getElementById("beginBtn").addEventListener("click", beginQuiz);
 saveNameBtn.addEventListener("click", addToHighScores);
