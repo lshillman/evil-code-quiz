@@ -281,7 +281,7 @@ function collectName() {
 // I decided to only add your name to the high scores if it's greater than 0. Since I'm only storing the top 10, that means your score has to be greater than 0 and grweater than the lowest score on the list (if there are 10 items) for the prompt to appear.
 
 function addToHighScores(e) {
-    e.preventDefault;
+    e.preventDefault();
     console.log(playerName.value);
     if (playerName.value) {
         scores.push({name: playerName.value, score: calculateScore()});
